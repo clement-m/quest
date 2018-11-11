@@ -8,16 +8,29 @@ class ClassUnits {
 	}
 	
 	display(context, canvasWidth, canvasHeight) {
-		var units = [];
+		var arrayUnitsTemp = [];
 		this.arrayUnits.forEach(function(Unit) {
+			if(Unit.attacking === undefined) {
+				Unit.updatePosition();
+			} else {
+				if(Unit.attacking) {
+					Unit.attack();
+				} else {
+					Unit.updatePosition();
+				}
+			}
+			
 			Unit.display(context);
-			Unit.colisionCanvas(canvasWidth, canvasHeight);
-			Unit.updatePosition();
-			units.push(Unit);
+
+			if(Unit.colisionCanvas !== undefined) {
+				Unit.colisionCanvas(canvasWidth, canvasHeight);
+			}
+			
+			arrayUnitsTemp.push(Unit);
 		});
 
 		this.arrayUnits.forEach(function(Unit) {
-			units.forEach(function(Ennemy) {
+			arrayUnitsTemp.forEach(function(Ennemy) {
 				if(!Unit.dead && !Ennemy.dead && Unit.id !== Ennemy.id) {
 					Unit.colidBall(Ennemy);
 				}
