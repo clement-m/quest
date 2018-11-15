@@ -1,33 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Quest</title>
-	<link rel="stylesheet" type="text/css" href="src/css/style.css">
-	
-	<script type="text/javascript" src="src/js/ClassUnits.js"></script>
-	<script type="text/javascript" src="src/js/ClassBall.js"></script>
-	<script type="text/javascript" src="src/js/ClassKeyboard.js"></script>
-	<script type="text/javascript" src="src/js/ClassSkeleton.js"></script>
+<?php
 
-	<script type="text/javascript" src="quest.js"></script>
+require_once 'vendor/autoload.php';
 
+$loader = new Twig_Loader_Array();
+$loader = new Twig_Loader_Filesystem('views');
+$twig = new Twig_Environment($loader, array(
+    'cache' => 'cache',
+));
 
-	<link rel="stylesheet" type="text/css" href="lib/css/bootstrap.css">
-	<script type="text/javascript" src="lib/js/jquery.js"></script>
-	<script type="text/javascript" src="lib/js/bootstrap.js"></script>
-</head>
-<body>
-	<div class="wrapper">
-		<br />
-		<br />
-		<br />
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10">
-				<canvas id="canvas" class="canvas" width="1500vw" height="400vh">Error</canvas>
-			</div>
-			<div class="col-md-1"></div>
-		</div>
-	</div>
-</body>
-</html>
+echo $twig->render('game.twig.html', array(
+	'name' => 'Fabien'
+));
