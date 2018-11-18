@@ -1,15 +1,12 @@
 class ClassGame {
 	constructor(canvasHeight) {
 		this.canvasHeight = canvasHeight;
+		this.Audios = new ClassGameAudios();
+		this.Images = new ClassGameImages();
 		this.Units =  new ClassUnits();
-
-		this.audio = new Audio("src/sound/music/castlevania.mp3");
 	}
 
 	addUnit(Unit) {
 		this.Units.addUnit(Unit);
 	}
-
-
-
 }

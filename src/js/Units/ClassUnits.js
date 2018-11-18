@@ -10,15 +10,16 @@ class ClassUnits {
 	display(context, canvasWidth, canvasHeight) {
 		this.arrayUnits.forEach(function(Unit) {
 			Unit.updatePosition();
+			
 			if(Unit.attacking) {
-				Unit.attack();
+				Unit.attack(this);
 			}
 			
 			if(Unit.colisionCanvas !== undefined) {
 				Unit.colisionCanvas(canvasWidth, canvasHeight);
 			}
 			Unit.display(context);
-		});
+		}, this);
 	}
 
 	die() {
