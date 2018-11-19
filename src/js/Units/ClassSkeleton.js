@@ -116,7 +116,7 @@ class ClassSkeleton extends ClassUnit {
     checkDie() {
         super.checkDie();
         if(this.isDead) {
-            this.airhorn.play();    
+            this.airhorn.play();  
         }
     }
 
