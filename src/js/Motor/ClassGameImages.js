@@ -15,7 +15,7 @@ class ClassGameImages {
         this.setImage('skeleton', 'skeleton');
         this.setImage('skeletonWalk', 'skeleton_walk');
         this.setImage('skeletonAttack', 'skeleton_attack');
-        this.setImage('skeletonAttack2', '/skeleton_attack_2');
+        this.setImage('skeletonAttack2', 'skeleton_attack_2');
         this.setImage('skeletonHit', 'skeletonHit');
         this.setImage('skeletonL', 'skeletonL');
         this.setImage('skeletonWalkL', 'skeleton_walkL');

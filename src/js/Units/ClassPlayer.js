@@ -1,9 +1,29 @@
 class ClassPlayer extends ClassUnit {
-	constructor(id, canvasHeight, posX, directionRight, Images, Audios) {
-        super(id, canvasHeight, posX, directionRight);
+	constructor(id, player, canvasHeight, posX, directionRight, patternName, Images, Audios) {
+        super(id, player, canvasHeight, posX, directionRight, patternName);
         //this.initAudios(Audios);
-        //this.initImages(Images);
+        this.initImages(Images);
         //this.Stats.hp = 100;    
+    }
+
+    stopMove() {
+        this.Stats.stopMove();
+    }
+
+    goLeft() {
+        this.Stats.goLeft(this);
+    }
+
+    goRight() {
+        this.Stats.goRight(this);
+    }
+
+    goTop() {
+        this.Stats.goTop();
+    }
+
+    goBottom() {
+        this.Stats.goBottom();
     }
 /*
     mainPattern () {
@@ -106,6 +126,7 @@ class ClassPlayer extends ClassUnit {
     initAudios(Audios) {
         
     }
+*/
 
     initImages(Images) {
         this.img = Images.images["skeleton"];
@@ -125,5 +146,4 @@ class ClassPlayer extends ClassUnit {
 
         this.currentImg = this.img;
     }
-*/
 }

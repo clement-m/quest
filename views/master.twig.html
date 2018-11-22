@@ -46,16 +46,7 @@
 
 
 			loadScript("src/js/Motor/quest.js", function(){
-			    // INIT GAME
-				var myInterval = setInterval(animate, 1000 / 30);
-				function animate() {
-				    context.clearRect(0, 0, canvas.width, canvas.height);
-				    if(started) {
-				        Game.Units.die();
-				        Game.Units.display(context, canvas.width, canvas.height);    
-				    }
-				    
-				}
+
 			});
 		}
 	</script>

@@ -8,14 +8,59 @@ class ClassUnitStat {
         this.minSpeed = -8;
         this.maxSpeed = 8;
     }
+
+    checkMaxSpeed() {
+        if(this.speedX > this.maxSpeed) this.speedX = this.maxSpeed;
+        if(this.speedY > this.maxSpeed) this.speedY = this.maxSpeed;
+        if(this.speedX < this.minSpeed) this.speedX = this.minSpeed;
+        if(this.speedY < this.minSpeed) this.speedY = this.minSpeed;
+    }
+
+    changeDirection(Unit) {
+        if(Unit.Stats.speedX != 0) {
+            if(Unit.Stats.speedX > 0) {
+                Unit.directionRight = true;
+            } else {
+                Unit.directionRight = false;
+            }
+        }
+    }
+
+    stopMove() {
+        this.speedX = 0;
+        this.speedY = 0;
+    }
+
+    goRight(Unit) {
+        this.speedX++;
+        this.changeDirection(Unit);
+    }
+
+    goLeft(Unit) {
+        this.speedX--;
+        this.changeDirection(Unit);
+    }
+
+    goTop() {
+        this.speedY--;
+    }
+
+    goBottom() {
+        this.speedY++;
+    }
 }
 
 class ClassUnitPosition {
-    constructor(posX, canvasHeight) {
+    constructor(posX, canvasHeight, height) {
         this.posX = posX;
-        this.posY = canvasHeight - this.height;
+        this.posY = canvasHeight - height;
         this.posXMargin = 15;
         this.posYMargin = 15;
+    }
+
+    updatePosition(Stats) {
+        this.posX += Stats.speedX;
+        this.posY += Stats.speedY;
     }
 }
 
@@ -28,16 +73,6 @@ class ClassAction {
         this.walkingMaxCount = 5;
     }
 
-    changeDirection(Unit) {
-    	if(Unit.speedX != 0) {
-            if(Unit.speedX > 0) {
-                Unit.directionRight = true;
-            } else {
-                Unit.directionRight = false;
-            }
-        }
-    }
-
     stay(Unit) {
     	if(Unit.directionRight) {
             Unit.currentImg = Unit.img;
@@ -47,22 +82,21 @@ class ClassAction {
     }
 
     walk(Unit) {
-        this.changeDirection(Unit);
-        if(this.speedX != 0 || this.speedY != 0) {
+        if(Unit.Stats.speedX !== 0 || Unit.Stats.speedY !== 0) {
             this.walking++;
             if(this.walking + 1 > this.walkingMaxCount) {
                 this.walking = 0;
-                if(this.directionRight) {
-                    if(this.currentImg === this.img) {
-                        this.currentImg = this.imgWalk;
+                if(Unit.directionRight) {
+                    if(Unit.currentImg === Unit.img) {
+                        Unit.currentImg = Unit.imgWalk;
                     } else {
-                        this.currentImg = this.img;
+                        Unit.currentImg = Unit.img;
                     }
                 } else {
-                    if(this.currentImg === this.imgL) {
-                        this.currentImg = this.imgWalkL;
+                    if(Unit.currentImg === Unit.imgL) {
+                        Unit.currentImg = Unit.imgWalkL;
                     } else {
-                        this.currentImg = this.imgL;
+                        Unit.currentImg = Unit.imgL;
                     }
                 }
                 
@@ -94,7 +128,7 @@ class ClassTicCounter {
 
 class ClassBonus {
     constructor() {
-        this.isBuff = true;
+        this.isBuff = false;
     }
 }
 
@@ -116,26 +150,26 @@ class ClassMalus {
 
 class ClassPattern {
 	constructor(patternName, directionRight) {
-        this.currentPattern = "";
+        this.currentPattern = patternName;
+    }
 
-
-        switch(patternName) {
+    applyPattern(Unit) {
+        switch (this.currentPattern) {
             case "player":
+                if(Unit.Stats.speedX !== 0) {
+                    Unit.Action.walk(Unit);
+                } else {
+                    Unit.Action.stay(Unit);
+                }
                 break;
-
-            case "moveOnly":
-                
-                walkOnly();
+            case "walk":
+                this.Action.walk(Unit);
                 break;
         }
     }
 
-    currentPattern() {
-        
-    }
-
     walkOnly(directionRight, ) {
-        this.currentPattern = walk();
+        this.currentPattern = "walk";
     }
 
     stay() {

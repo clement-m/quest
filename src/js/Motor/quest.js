@@ -1,5 +1,5 @@
 
-var started = false;
+var started = true;
 
 function getRandom(max) {
     return Math.floor(Math.random() * max + 1);
@@ -19,14 +19,16 @@ if(!context) {
     alert("Impossible de récupérer le context");
 }
 
+
 var Game = new ClassGame();
 
 // INIT UNITS
-var Player = new ClassPlayer(getRandom(1000000), canvas.height, 0, true, "moveOnly", Game.Images, Game.Audios);
+var Player = new ClassPlayer(getRandom(1000000), true, canvas.height, 0, true, "moveOnly", Game.Images, Game.Audios);
 Game.addUnit(Player);
 
-aSkeleton = new ClassSkeleton(getRandom(1000000), canvas.height, 1600, false, "player", Game.Images, Game.Audios);
-Game.addUnit(aSkeleton);
+
+//aSkeleton = new ClassSkeleton(getRandom(1000000), canvas.height, 1600, false, "player", Game.Images, Game.Audios);
+//Game.addUnit(aSkeleton);
 
 //aSkeleton = new ClassSkeleton(getRandom(1000000), canvas.height, 400, -4, Game.Images);
 //Game.addUnit(aSkeleton);
@@ -39,17 +41,21 @@ window.addEventListener("keydown", onKeyDown, false);
 window.addEventListener("keyup", onKeyUp, false);
 function onKeyDown(event) {
     switch (event.key) {
-        case "z": //d
-            Player.speedY--;
+        case "z":
+        case "Z":
+            Player.goTop();
             break;
-        case "q": //s
-            Player.speedX--;
+        case "q":
+        case "Q":
+            Player.goLeft();
             break;
-        case "s": //a
-            Player.speedY++;
+        case "s":
+        case "S":
+            Player.goBottom();
             break;
-        case "d": //w
-            Player.speedX++;
+        case "d":
+        case "D":
+            Player.goRight();
             break;
         case " ":
             if(!Player.attacking) {
@@ -57,24 +63,40 @@ function onKeyDown(event) {
             }
         case "Enter":
                 started = true;
-                Game.Audios.musics['castlevania'].play();
+                //Game.Audios.musics['castlevania'].play();
             break;
     }
 }
 
 function onKeyUp(event) {
     switch (event.key) {
-        case "z": //d
-            Player.speedY = 0;
+        case "z":
+        case "Z":
+            Player.stopMove();
             break;
-        case "q": //s
-            Player.speedX = 0;
+        case "q":
+        case "Q":
+            Player.stopMove();
             break;
-        case "s": //a
-            Player.speedY = 0;
+        case "s":
+        case "S":
+            Player.stopMove();
             break;
-        case "d": //w
-            Player.speedX = 0;
+        case "d":
+        case "D":
+            Player.stopMove();
             break;
     }
+}
+
+// INIT GAME
+
+var myInterval = setInterval(animate, 1000 / 30);
+function animate() {
+    if(started) {
+        Game.Units.die();
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        Game.Units.display(context, canvas.width, canvas.height);    
+    }
+    
 }
