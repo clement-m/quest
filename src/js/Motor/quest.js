@@ -1,5 +1,5 @@
 
-var started = true;
+var started = false;
 
 function getRandom(max) {
     return Math.floor(Math.random() * max + 1);
@@ -63,7 +63,7 @@ function onKeyDown(event) {
             }
         case "Enter":
                 started = true;
-                //Game.Audios.musics['castlevania'].play();
+                Game.Audios.musics['castlevania'].play();
             break;
     }
 }

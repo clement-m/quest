@@ -8,8 +8,8 @@
             }
             this.directionRight = directionRight;
             
-            this.Stats = new ClassUnitStat();
-            this.Position = new ClassUnitPosition(posX, canvasHeight, this.Stats.height);
+            this.Stats = new ClassStats();
+            this.Position = new ClassPosition(posX, canvasHeight, this.Stats.height);
             this.Malus = new ClassMalus();
             this.Bonus = new ClassBonus();
             this.Action = new ClassAction();
