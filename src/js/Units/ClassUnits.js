@@ -23,10 +23,10 @@ class ClassUnits {
 	}
 
 	die() {
-		this.arrayUnits.forEach(function(item, index, object) {
-			if(item.dead) {
-				object.splice(index, 1);
+		this.arrayUnits.forEach(function(Unit, index, arrayUnits) {
+			if(this.Malus.isDead) {
+				arrayUnits.splice(index, 1);
 			}
 		});
 	}
-};
+}

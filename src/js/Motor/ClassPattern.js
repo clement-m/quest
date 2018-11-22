@@ -1,6 +1,31 @@
+class ClassUnitStat {
+    constructor() {
+        this.width = 75;
+        this.height = 200;
+        this.hp = 0;
+        this.speedY = 0;
+        this.speedX = 0;
+        this.minSpeed = -8;
+        this.maxSpeed = 8;
+    }
+}
+
+class ClassUnitPosition {
+    constructor(posX, canvasHeight) {
+        this.posX = posX;
+        this.posY = canvasHeight - this.height;
+        this.posXMargin = 15;
+        this.posYMargin = 15;
+    }
+}
+
 class ClassAction {
 	constructor() {
-
+        this.isAttacking = false;
+        this.isWalking = false;
+        this.currentAction = "";
+        this.walking = 0;
+        this.walkingMaxCount = 5;
     }
 
     changeDirection(Unit) {
@@ -49,22 +74,68 @@ class ClassAction {
 
 
 
-    attack() {
+    attack(Unit) {
 
     }
 
-    die() {
+    die(Unit) {
 
     }
 }
 
-class ClassPattern {
-	constructor() {
+class ClassTicCounter {
+    constructor() {
+        this.attackTic = 0;
+        this.attackMaxDuration = 15;
+        this.takingDmgTic = 0;
+        this.takingDmgMaxDuration = 15;
+    }
+}
 
+class ClassBonus {
+    constructor() {
+        this.isBuff = true;
+    }
+}
+
+
+
+class ClassMalus {
+    constructor() {
+        this.isDebuff = false;
+        this.isStunned = false;
+        this.isRoot = false;
+        this.isTakingDmg = false;
+        this.isDead = false;
     }
 
-    walkOnly() {
+    stun(Unit) {
+        Unit.isStunned = true;
+    }
+}
 
+class ClassPattern {
+	constructor(patternName, directionRight) {
+        this.currentPattern = "";
+
+
+        switch(patternName) {
+            case "player":
+                break;
+
+            case "moveOnly":
+                
+                walkOnly();
+                break;
+        }
+    }
+
+    currentPattern() {
+        
+    }
+
+    walkOnly(directionRight, ) {
+        this.currentPattern = walk();
     }
 
     stay() {

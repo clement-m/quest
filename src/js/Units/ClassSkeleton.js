@@ -2,17 +2,17 @@ class ClassSkeleton extends ClassUnit {
     constructor(id, canvasHeight, posX, directionRight, Images, Audios) {
         super(id, canvasHeight, posX, directionRight);
         this.directionRight = false;
-        this.initAudios(Audios);
-        this.initImages(Images);
-
-        this.hp = 2;
-        this.takingDmgMaxDuration = 30;
-
-        this.speed = 4;
-        this.movePattern ();
+        //this.initAudios(Audios);
+        //this.initImages(Images);
 
 
+        this.Stats.speedX = (this.directionRight) ? this.Stats.speedX : this.Stats.speedX * -1;
+        this.Stats.hp = 2;
+        this.takingDmgMaxDuration = 30;  
+        //this.movePattern();
     }
+
+    /*
 
     mainPattern () {
         super.mainPattern();
@@ -26,11 +26,7 @@ class ClassSkeleton extends ClassUnit {
         this.speedX = (this.directionRight) ? this.speed : this.speed * -1;
     }
 
-    display(context) {
-        if(!this.isDead) {
-            context.drawImage(this.currentImg, 0, 0, 339, 656, this.posX + this.posXMargin, this.posY - this.posYMargin, this.width, this.height);
-        }
-    }
+
 
     takeDamage() {
         this.walking
@@ -143,6 +139,5 @@ class ClassSkeleton extends ClassUnit {
 
         this.currentImg = this.img;
     }
-
-
+    */
 }

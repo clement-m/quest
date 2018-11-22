@@ -1,11 +1,11 @@
 class ClassPlayer extends ClassUnit {
 	constructor(id, canvasHeight, posX, directionRight, Images, Audios) {
         super(id, canvasHeight, posX, directionRight);
-        this.initAudios(Audios);
-        this.initImages(Images);
-        this.hp = 100;    
+        //this.initAudios(Audios);
+        //this.initImages(Images);
+        //this.Stats.hp = 100;    
     }
-
+/*
     mainPattern () {
         super.mainPattern();
         if (!this.isTakingDmg) {
@@ -125,4 +125,5 @@ class ClassPlayer extends ClassUnit {
 
         this.currentImg = this.img;
     }
+*/
 }
