@@ -3,6 +3,7 @@
     	constructor(id, player, canvasHeight, posX, directionRight, patternName) {
             this.id = id;
             this.isPlayer = player;
+            this.name;
             if(this.isPlayer) {
                 patternName = "player";
             }
@@ -12,11 +13,13 @@
             this.Position = new ClassPosition(posX, canvasHeight, this.Stats.height);
             this.Malus = new ClassMalus();
             this.Bonus = new ClassBonus();
-            this.Action = new ClassAction();
+            this.Animation = new ClassUnitAnimation();
             this.Pattern = new ClassPattern(patternName, directionRight);
     	}
 
-        display(context) {
+
+
+        action() {
             if(!this.Malus.isDebuff) {
                 if(this.Bonus.isBuff) {
                     // apply buff
@@ -27,12 +30,11 @@
                 // appliquer le debuff
                 
             }
-            this.draw(context);
         }
           
 
-        draw(context) {
-            context.drawImage(this.currentImg, 0, 0, 339, 656, this.Position.posX + this.Position.posXMargin, this.Position.posY - this.Position.posYMargin, this.Stats.width, this.Stats.height);
+        display() {
+            Game.context.drawImage(this.currentImg, 0, 0, 339, 656, this.Position.posX + this.Position.posXMargin, this.Position.posY - this.Position.posYMargin, this.Stats.width, this.Stats.height);
         }
 /*  
         mainPattern() {

@@ -41,8 +41,8 @@ class ClassBall {
     }
 
     colidBall(Ennemy) {
-        var impactX = false;
-        var impactY = false;
+        let impactX = false;
+        let impactY = false;
         if(this.posX + this.diametreBall / 2 < Ennemy.posX + Ennemy.diametreBall / 2 && this.posX - this.diametreBall / 2 > Ennemy.posX - Ennemy.diametreBall / 2) {
             impactX = true;
             //console.log('in X');

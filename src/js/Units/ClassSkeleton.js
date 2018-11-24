@@ -1,33 +1,18 @@
 class ClassSkeleton extends ClassUnit {
-    constructor(id, canvasHeight, posX, directionRight, Images, Audios) {
-        super(id, canvasHeight, posX, directionRight);
+    constructor(id, player, canvasHeight, posX, directionRight, patternName, Images, Audios) {
+        super(id, player, canvasHeight, posX, directionRight, patternName);
+        this.name = "skeleton";
         this.directionRight = false;
-        //this.initAudios(Audios);
-        //this.initImages(Images);
+        this.initAudios(Audios);
+        this.initImages(Images);
 
 
         this.Stats.speedX = (this.directionRight) ? this.Stats.speedX : this.Stats.speedX * -1;
         this.Stats.hp = 2;
+        this.Stats.speedX = -4;
         this.takingDmgMaxDuration = 30;  
-        //this.movePattern();
     }
-
-    /*
-
-    mainPattern () {
-        super.mainPattern();
-        if (!this.isTakingDmg) {
-            this.movePattern();
-            this.walk();
-        }
-    }
-
-    movePattern () {
-        this.speedX = (this.directionRight) ? this.speed : this.speed * -1;
-    }
-
-
-
+/*
     takeDamage() {
         this.walking
         this.isTakingDmg = true;
@@ -62,60 +47,7 @@ class ClassSkeleton extends ClassUnit {
         }
         this.checkDie();
     }
-
-
-
-    walk() {
-        this.move();
-        if(this.speedX != 0) {
-            if(this.speedX > 0) {
-                this.directionRight = true;
-            } else {
-                this.directionRight = false;
-            }
-        }
-        if(this.speedX != 0 || this.speedY != 0) {
-            this.walking++;
-            if(this.walking + 1 > this.walkingMaxCount) {
-                this.walking = 0;
-                if(this.directionRight) {
-                    if(this.currentImg === this.img) {
-                        this.currentImg = this.imgWalk;
-                    } else {
-                        this.currentImg = this.img;
-                    }
-                } else {
-                    if(this.currentImg === this.imgL) {
-                        this.currentImg = this.imgWalkL;
-                    } else {
-                        this.currentImg = this.imgL;
-                    }
-                }
-                
-            }
-        } else {
-            if(this.directionRight) {
-                this.currentImg = this.img;
-            } else {
-                this.currentImg = this.imgL;
-            }
-        }
-    }
-
-
-
-    getRandom(max) {
-        return Math.floor(Math.random() * max + 1);
-    }
-
-
-    checkDie() {
-        super.checkDie();
-        if(this.isDead) {
-            this.airhorn.play();  
-        }
-    }
-
+*/
     initAudios(Audios) {
         this.skeletonHit = Audios.effects['japan'];
         this.airhorn = Audios.effects['airhorn'];
@@ -139,5 +71,5 @@ class ClassSkeleton extends ClassUnit {
 
         this.currentImg = this.img;
     }
-    */
+
 }

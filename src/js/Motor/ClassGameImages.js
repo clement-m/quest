@@ -6,7 +6,7 @@ class ClassGameImages {
     }
 
     setImage(name, src) {
-        var img = new Image();
+        let img = new Image();
         img.src = 'src/img/' + src + '.png';
         this.images[name] = img;
     }

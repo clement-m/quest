@@ -1,9 +1,16 @@
 class ClassGameAudios {
-	constructor() {
+	constructor(MUSIC_ON) {
+		this.MUSIC_ON = MUSIC_ON;
 		this.musics = [];
 		this.effects = [];
 		this.initMusic();
 		this.initEffect();
+	}
+
+	playMusic() {
+		if(this.MUSIC_ON) {
+			this.musics['castlevania'].play();
+		}
 	}
 
     setMusic(name, src) {

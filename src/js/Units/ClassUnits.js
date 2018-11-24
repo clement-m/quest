@@ -7,10 +7,11 @@ class ClassUnits {
 		this.arrayUnits.push(Unit);
 	}
 	
-	display(context, canvasWidth, canvasHeight) {
+	display(canvasWidth, canvasHeight) {
 		this.arrayUnits.forEach(function(Unit) {
 			Unit.updatePosition();
-			Unit.display(context);
+			Unit.action();
+			Unit.display();
 		}, this);
 	}
 

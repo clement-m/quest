@@ -1,9 +1,11 @@
 class ClassPlayer extends ClassUnit {
 	constructor(id, player, canvasHeight, posX, directionRight, patternName, Images, Audios) {
         super(id, player, canvasHeight, posX, directionRight, patternName);
+        this.name = "Player";
         //this.initAudios(Audios);
         this.initImages(Images);
-        //this.Stats.hp = 100;    
+        this.Stats.hp = 100;
+        this.Stats.attackRange = 100;
     }
 
     stopMove() {
@@ -24,6 +26,26 @@ class ClassPlayer extends ClassUnit {
 
     goBottom() {
         this.Stats.goBottom();
+    }
+
+    attack(Units) {
+        this.Pattern.setAttack();
+        this.stopMove();
+        this.hit(Units);
+    }
+
+   hit(Units) {
+        let resultLog = "no hit success";
+        Units.arrayUnits.forEach(function(Unit) {
+            if(Game.Colision.checkColision(this, Unit)) {
+                resultLog = this.name + " has hit " + Unit.name + ", hp left : " + Unit.Stats.hp;
+            }
+        }, this);
+        console.log(resultLog);
+    }
+
+    initAudios(Audios) {
+        
     }
 /*
     mainPattern () {
@@ -76,56 +98,9 @@ class ClassPlayer extends ClassUnit {
         }
     }
 
-    attack(Units) {
-        this.attacking = true;
-        this.speedX = 0;
-        this.speedY = 0;
-        this.attackTic++;
-        if(this.attackTic <= this.attackMaxDuration / 2) {
-            if(this.directionRight) {
-                this.currentImg = this.imgAttack;
-            } else {
-                this.currentImg = this.imgAttackL;
-            }
-            
-        } else {
-            if(this.directionRight) {
-                this.currentImg = this.imgAttack2;
-            } else {
-                this.currentImg = this.imgAttack2L;
-            }
-            
-        }
-        if(this.attackTic > this.attackMaxDuration) {
-            this.attacking = false;
-            this.attackTic = 0;
-        }
-        this.hit(Units);
-    }
 
-    hit(Units) {
-        if(this.attacking) {
-            Units.arrayUnits.forEach(function(Unit) {
-                if(this.id !== Unit.id) {
-                    if(this.directionRight) {
-                        if(Unit.posX > this.posX && Unit.posX < this.posX + 100) {
-                            console.log(Unit.hp);
-                            Unit.isTakingDmg = true;
-                        }
-                    } else {
-                        if(Unit.posX < this.posX && Unit.posX > this.posX - 100) {
-                            console.log(Unit.hp);
-                            Unit.isTakingDmg = true;
-                        }
-                    }
-                }
-            }, this);
-        }
-    }
 
-    initAudios(Audios) {
-        
-    }
+ 
 */
 
     initImages(Images) {

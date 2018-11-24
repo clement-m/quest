@@ -1,47 +1,59 @@
 class ClassKeyboard {
-	constructor(Player) {
-		this.Player = Player;
+	constructor() {
+
 	}
 
-	onKeyDown(event) {
-        var key = event.key;
-        switch (key) {
-            case "z": //d
-                this.Player.speedY--;
-                console.log(this.Player.speedY);
+    setPlayer() {
+        window.addEventListener("keydown", this.onKeyDown);
+        window.addEventListener("keyup", this.onKeyUp);
+    }
+
+    onKeyDown(event) {
+    switch (event.key) {
+            case "z":
+            case "Z":
+                Game.Player.goTop();
                 break;
-            case "q": //s
-                this.Player.speedX--;
-                
-                console.log(this.Player.speedX);
+            case "q":
+            case "Q":
+                Game.Player.goLeft();
                 break;
-            case "s": //a
-                this.Player.speedY++;
-                console.log(this.Player.speedY);
+            case "s":
+            case "S":
+                Game.Player.goBottom();
                 break;
-            case "d": //w
-                this.Player.speedX++;
-                console.log(this.Player.speedX);
+            case "d":
+            case "D":
+                Game.Player.goRight();
+                break;
+            case " ":
+                Game.Player.attack(Game.Units);
+                break;
+            case "Enter":
+                Game.start();
+                Game.Audios.playMusic();
                 break;
         }
     }
-/*
+
     onKeyUp(event) {
-        var key = event.key;
-        switch (key) {
-            case "z": //d
-                keyD = false;
+    switch (event.key) {
+            case "z":
+            case "Z":
+                Game.Player.stopMove();
                 break;
-            case "q": //s
-                keyS = false;
+            case "q":
+            case "Q":
+                Game.Player.stopMove();
                 break;
-            case "s": //a
-                keyA = false;
+            case "s":
+            case "S":
+                Game.Player.stopMove();
                 break;
-            case "d": //w
-                keyW = false;
+            case "d":
+            case "D":
+                Game.Player.stopMove();
                 break;
         }
     }
-*/
 }
