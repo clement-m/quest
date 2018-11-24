@@ -1,4 +1,4 @@
-class ClassUnitAnimation {
+class ClassAnimation {
     constructor() {
         this.isAttacking = false;
         this.isWalking = false;

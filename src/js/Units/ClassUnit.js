@@ -13,7 +13,7 @@
             this.Position = new ClassPosition(posX, canvasHeight, this.Stats.height);
             this.Malus = new ClassMalus();
             this.Bonus = new ClassBonus();
-            this.Animation = new ClassUnitAnimation();
+            this.Animation = new ClassAnimation();
             this.Pattern = new ClassPattern(patternName, directionRight);
     	}
 
