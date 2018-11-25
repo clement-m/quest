@@ -4,8 +4,7 @@
 	<title>Quest</title>
 	<link rel="stylesheet" type="text/css" href="src/css/style.css">
 	{% include 'lib.twig.html' %}
-	{% include 'srcMotor.twig.html' %}
-	{% include 'srcUnit.twig.html' %}
+	{% include 'src.twig.html' %}
 	<script type="text/javascript">
 		window.onload = function() {
 			function loadScript(url, callback){
@@ -23,7 +22,7 @@
 			    script.src = url;
 			    document.getElementsByTagName("head")[0].appendChild(script);
 			}
-			loadScript("src/js/Motor/quest.js");
+			loadScript("Game/launcher.js");
 		}
 	</script>
 </head>
