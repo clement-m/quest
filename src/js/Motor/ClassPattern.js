@@ -10,8 +10,9 @@ class ClassPattern {
         this.currentPattern = "player";
     }
 
-    walker() {
-        this.currentPattern = "walk";
+    setWalk() {
+        this.currentPattern = "walker";
+        this.Tics.setTic(this.currentPattern);
     }
 
     setAttack() {
@@ -23,19 +24,26 @@ class ClassPattern {
         switch (this.currentPattern) {
             case "player":
                 if(Unit.Stats.speedX !== 0) {
-                    Unit.Animation.walk(Unit);
+                    Game.Animation.walk(Unit);
                 } else {
-                    Unit.Animation.stay(Unit);
+                    Game.Animation.stay(Unit);
                 }
                 break;
             case "walker":
-                Unit.Animation.walk(Unit);
+                if(this.Tics.tic[this.currentPattern] === undefined) {
+                    this.setWalk();
+                }
+                if(this.Tics.next(this.currentPattern)) {
+                    this.resetMasterPattern(Unit);
+                } else {
+                    Game.Animation.walk(Unit, this.Tics, this.currentPattern);
+                }
                 break;
             case "attack":
                 if(this.Tics.next(this.currentPattern)) {
                     this.resetMasterPattern(Unit);
                 } else {
-                    Unit.Animation.attack(Unit, this.Tics, this.currentPattern);
+                    Game.Animation.attack(Unit, this.Tics, this.currentPattern);
                 }
                 break;
         }
@@ -47,7 +55,8 @@ class ClassPattern {
                 this.currentPattern = "player";
                 break;
             case "walker":
-                this.currentPattern = "walk";
+                this.setWalk();
+                this.currentPattern = "walker";
                 break;
         }
 

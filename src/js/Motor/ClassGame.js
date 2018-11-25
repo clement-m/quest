@@ -20,6 +20,7 @@ class ClassGame {
 		this.Keyboard = new ClassKeyboard();
 		this.Audios = new ClassGameAudios(this.MUSIC_ON);
 		this.Images = new ClassGameImages();
+		this.Animation = new ClassAnimation();
 		this.Units =  new ClassUnits();
 		this.Colision = new ClassColision(this.SHOW_COLISION_ON);
 
