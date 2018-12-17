@@ -6,16 +6,11 @@
     "configurations": [
         {
             "type": "chrome",
-            "request": "attach",
-            "name": "Attach to Chrome",
-            "port": 9222,
-            "webRoot": "${workspaceFolder}"
-        },
-        {
-            "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/index.php"
+            "name": "Debug in Chrome",
+            "port": 9222,
+            "url": "http://localhost/github/quest/",
+            "webRoot": "${workspaceFolder}/index.php"
         }
     ]
 }
