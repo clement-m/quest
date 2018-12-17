@@ -1,22 +1,18 @@
-
     class ClassUnit {
     	constructor(id, player, canvasHeight, posX, directionRight, patternName) {
             this.id = id;
             this.isPlayer = player;
             this.name;
+            this.directionRight = directionRight;
             if(this.isPlayer) {
                 patternName = "player";
             }
-            this.directionRight = directionRight;
-            
             this.Stats = new ClassStats();
             this.Position = new ClassPosition(posX, canvasHeight, this.Stats.height);
             this.Malus = new ClassMalus();
             this.Bonus = new ClassBonus();
             this.Pattern = new ClassPattern(patternName, directionRight);
     	}
-
-
 
         action() {
             if(!this.Malus.isDebuff) {
@@ -27,10 +23,8 @@
                 }
             } else {
                 // appliquer le debuff
-                
             }
         }
-          
 
         display() {
             Game.context.drawImage(this.currentImg, 0, 0, 339, 656, this.Position.posX + this.Position.posXMargin, this.Position.posY - this.Position.posYMargin, this.Stats.width, this.Stats.height);
@@ -56,8 +50,6 @@
         }
 */
 
-/*
-*/
         updatePosition() {
             this.Stats.checkMaxSpeed();
             this.Position.updatePosition(this.Stats);

@@ -2,8 +2,6 @@ class ClassPattern {
 	constructor(patternName, directionRight) {
         this.masterPattern = patternName;
         this.currentPattern = patternName;
-        
-        this.Tics = new ClassTic();
     }
 
     player() {
@@ -12,12 +10,12 @@ class ClassPattern {
 
     setWalk() {
         this.currentPattern = "walker";
-        this.Tics.setTic(this.currentPattern);
+        Game.Tics.setTic(this.currentPattern);
     }
 
     setAttack() {
         this.currentPattern = "attack";
-        this.Tics.setTic(this.currentPattern);
+        Game.Tics.setTic(this.currentPattern);
     }
 
     applyPattern(Unit) {
@@ -30,20 +28,20 @@ class ClassPattern {
                 }
                 break;
             case "walker":
-                if(this.Tics.tic[this.currentPattern] === undefined) {
+                if(Game.Tics.tic[this.currentPattern] === undefined) {
                     this.setWalk();
                 }
-                if(this.Tics.next(this.currentPattern)) {
+                if(Game.Tics.next(this.currentPattern)) {
                     this.resetMasterPattern(Unit);
                 } else {
-                    Game.Animation.walk(Unit, this.Tics, this.currentPattern);
+                    Game.Animation.walk(Unit, this.currentPattern);
                 }
                 break;
             case "attack":
-                if(this.Tics.next(this.currentPattern)) {
+                if(Game.Tics.next(this.currentPattern)) {
                     this.resetMasterPattern(Unit);
                 } else {
-                    Game.Animation.attack(Unit, this.Tics, this.currentPattern);
+                    Game.Animation.attack(Unit, this.currentPattern);
                 }
                 break;
         }

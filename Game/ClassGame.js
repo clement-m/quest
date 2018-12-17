@@ -3,27 +3,22 @@ class ClassGame {
 		// GAME SETTING
 		this.MUSIC_ON = false;
 		this.SOUND_EFFECT_ON = false;
-
-
 		// DEVELOPPEMENT SETTING
 		this.SHOW_COLISION_ON = true;
-
+		// ATTR
 		this.started = true;
-
 		this.Player;
-
 		this.canvas = this.getCanvas(document);
 		this.context = this.getContext(this.canvas);
 		this.canvasHeight = this.canvas.height;
 		this.canvasWidth = this.canvas.width;
-
 		this.Keyboard = new ClassKeyboard();
 		this.Audios = new ClassGameAudios(this.MUSIC_ON);
 		this.Images = new ClassGameImages();
 		this.Animation = new ClassAnimation();
 		this.Units =  new ClassUnits();
 		this.Colision = new ClassColision(this.SHOW_COLISION_ON);
-
+		this.Tics = new ClassTic();
 		this.init();
 	}
 

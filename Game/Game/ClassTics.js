@@ -1,10 +1,8 @@
 class ClassTic {
     constructor() {
     	this.tic = [];
-
         this.takingDmgTic = 0;
         this.takingDmgMaxDuration = 15;
-
         this.attackDuration = 15;
     }
 

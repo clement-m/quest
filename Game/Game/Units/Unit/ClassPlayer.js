@@ -97,10 +97,6 @@ class ClassPlayer extends ClassUnit {
             }
         }
     }
-
-
-
- 
 */
 
     initImages(Images) {

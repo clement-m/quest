@@ -1,7 +1,6 @@
 class ClassColision {
 	constructor(SHOW_COLISION_ON) {
         this.SHOW_COLISION_ON = SHOW_COLISION_ON;
-
         this.colisions = [];
     }
 
@@ -43,6 +42,5 @@ class ClassColision {
             );
             Game.context.stroke();
         }
-
     }
 }

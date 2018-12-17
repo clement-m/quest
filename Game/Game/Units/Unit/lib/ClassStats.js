@@ -2,7 +2,6 @@ class ClassStats {
     constructor() {
         this.width = 75;
         this.height = 200;
-
         this.hp = 0;
         this.speedY = 0;
         this.speedX = 0;

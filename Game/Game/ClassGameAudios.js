@@ -28,7 +28,7 @@ class ClassGameAudios {
 	}
 
 	initEffect() {
-		this.setEffect('japan', 'japan');
+		this.setEffect('japan'  , 'japan');
 		this.setEffect('airhorn', 'airhorn');
 	}
 }

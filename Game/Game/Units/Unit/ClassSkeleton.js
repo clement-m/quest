@@ -3,14 +3,12 @@ class ClassSkeleton extends ClassUnit {
         super(id, player, canvasHeight, posX, directionRight, patternName);
         this.name = "skeleton";
         this.directionRight = false;
-        this.initAudios(Audios);
-        this.initImages(Images);
-
-
         this.Stats.speedX = (this.directionRight) ? this.Stats.speedX : this.Stats.speedX * -1;
         this.Stats.hp = 2;
         this.Stats.speedX = -4;
-        this.takingDmgMaxDuration = 30;  
+        this.takingDmgMaxDuration = 30;
+        this.initAudios(Audios);
+        this.initImages(Images);
     }
 /*
     takeDamage() {
